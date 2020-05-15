@@ -16,6 +16,9 @@ $('#btnSlotAdd').click(function(){
     )
 })
     function refreshStudentsTable(students){
+        console.log("yahan pahuch gaye ham")
+        console.log(students)
+    
         tbl_students.empty()
         tbl_students.append(
            `<tr>

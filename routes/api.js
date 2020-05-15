@@ -60,10 +60,7 @@ route.get('/Aryan/Dates',(req,res)=>{
 })
 route.post('/Aryan',(req,res)=>{
     db.addSlotsA(req.body.Date,req.body.Slot,req.body.Available)
-    .then(()=>{res.redirect('/Prem')
-            location.reload()    
-         }   
-    )
+    .then(()=>res.redirect('/Aryan'))
     .catch((err)=>res.send({error:err}))
 })
 route.get('/consellors',(req,res)=>{

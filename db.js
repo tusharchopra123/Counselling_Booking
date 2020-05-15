@@ -83,14 +83,6 @@ connection.query(
         }
     }
 )
-// connection.query(`
-//     insert into consellors(name) values('Aryan')
-//     `
-//     ,(err,results)=>{
-//         if(err)console.log(err)
-//         else console.log("Inserted Successfully")
-//     }
-// )
 function getAllstudentR(){
     return new Promise((resolve,reject)=>{
         connection.query(
@@ -143,8 +135,8 @@ function getAllstudentP(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select name,description,s.Date,s.slot from Prem p,
-            students s where p.student_id = s.student_id
+            Select name,description,Date,slot from 
+            students where consellor_id=2
             `,function(err,rows,cols){
                 if(err)reject(err)
                 else resolve(rows)
@@ -192,8 +184,8 @@ function getAllstudentA(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select name,description,s.Date,s.slot from Aryan a,
-            students s where a.student_id = s.student_id
+            Select name,description,Date,slot from 
+            students where consellor_id = 3
             `,function(err,rows,cols){
                 if(err)reject(err)
                 else resolve(rows)
