@@ -1,142 +1,349 @@
-const Sequelize = require('sequelize')
-
-const db = new Sequelize( 'testdb', 'testuser', 'testpass', {
-    host: 'localhost',
-    dialect: 'mysql',
-    pool: {
-        min: 0,
-        max: 5,
-    }
-});
-
-const Consellor = db.define('Consellors', {
-    consellor_id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-    },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    },{
-
-    }
-)
-const Raj = db.define('raj_1',{
-    consellor_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-    },
-    date:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    slot:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },Available:{
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },student1id:{
-        type: Sequelize.INTEGER,
-    },student2id:{
-        type: Sequelize.INTEGER,
-    },student2id:{
-        type: Sequelize.INTEGER,
-    }
-    },{
-
-    }
-)
-const Prem = db.define('prem_1',{
-    consellor_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-    },
-    date:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    slot:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },Available:{
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },student1id:{
-        type: Sequelize.INTEGER,
-    },student2id:{
-        type: Sequelize.INTEGER,
-    },student2id:{
-        type: Sequelize.INTEGER,
-    }
-    },{
-
-    }
-)
-const Aryan = db.define('aryan_1',{
-    consellor_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-    },
-    date:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    slot:{
-        type: Sequelize.STRING,
-        allowNull: false
-    },Available:{
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },student1id:{
-        type: Sequelize.INTEGER,
-    },student2id:{
-        type: Sequelize.INTEGER,
-    },student2id:{
-        type: Sequelize.INTEGER,
-    }
-    },{
-
-    }
-)
-const Student = db.define('students', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        foreignKey: 'student_id'
-    },
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    slot_booked: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    consellor_id:{
-        type: Sequelize.INTEGER,
-    },
-    Questions: {
-        type: Sequelize.STRING,
-        allowNull: false,
-    }
+const mysql = require('mysql2')
+const connection = mysql.createConnection({
+    host:'remotemysql.com',
+    database: 'HFHpn7C44I',
+    user:'HFHpn7C44I',
+    password: 'TgmohC8xOi'
 })
-db
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+connection.query(
+    `create table if not exists consellors(
+        consellor_id integer auto_increment primary key,
+        name varchar(50) not null
+    )`,function(err,results){
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Table created successfully")
+        }
+    }
+)
+connection.query(
+    `   create table if not exists Raj(
+        consellor_id integer not null,
+        Date varchar(50) not null,
+        slot varchar(50) not null,
+        avaliable integer not null,
+        studentid1 integer,
+        studentid2 integer,
+        studentid3 integer
+    )`,function(err,results){
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Table created successfully")
+        }
+    }
+)
+connection.query(
+    `create table if not exists Prem(
+        consellor_id integer not null,
+        Date varchar(50) not null,
+        slot varchar(50) not null,
+        avaliable integer not null,
+        studentid1 integer,
+        studentid2 integer,
+        studentid3 integer
+    )`,function(err,results){
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Table created successfully")
+        }
+    }
+)
+connection.query(
+    `create table if not exists Aryan(
+        consellor_id integer not null,
+        Date varchar(50) not null,
+        slot varchar(50) not null,
+        avaliable integer not null,
+        studentid1 integer,
+        studentid2 integer,
+        studentid3 integer
+    )`,function(err,results){
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Table created successfully")
+        }
+    }
+)
+connection.query(
+    `create table if not exists students(
+        student_id integer auto_increment primary key,
+        date varchar(50) not null,
+        slot varchar(50) not null,
+        consellor_id integer not null,
+        description varchar(500)
+    )`,function(err,results){
+        if(err){
+            console.log(err)
+        }else{
+            console.log("Table created successfully")
+        }
+    }
+)
+// connection.query(`
+//     insert into consellors(name) values('Aryan')
+//     `
+//     ,(err,results)=>{
+//         if(err)console.log(err)
+//         else console.log("Inserted Successfully")
+//     }
+// )
+function getAllstudentR(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Select name,description,Date,slot from 
+              students where consellor_id=1
+            `,function(err,rows,cols){
+                if(err){reject(err)}
+                else {resolve(rows)}
+            }
+        )
+    })
+}
+function addSlotsR(Date,Slot,Available){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Insert into Raj(consellor_id,Date,slot,available) values(?,?,?,?)
+            `,['1',Date,Slot,Available],
+            function(err,results){
+                if(err)reject(err)
+                else {resolve()}
+            }
+        )
+    })
+}
+function getAllSlotsR(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select DISTINCT slot,Date,available from Raj
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function getAllDatesR(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select DISTINCT Date from Raj
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function getAllstudentP(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select name,description,s.Date,s.slot from Prem p,
+            students s where p.student_id = s.student_id
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function addSlotsP(Date,Slot,Available){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Insert into Prem(consellor_id,Date,slot,available) values(?,?,?,?)
+            `,['2',Date,Slot,Available],
+            function(err,results){
+                if(err)reject(err)
+                else {resolve()}
+            }
+        )
+    })
+}
+function getAllSlotsP(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select DISTINCT slot,Date,available from Prem
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function getAllDatesP(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select DISTINCT Date from Prem
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function getAllstudentA(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select name,description,s.Date,s.slot from Aryan a,
+            students s where a.student_id = s.student_id
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function addSlotsA(Date,Slot,Available){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Insert into Aryan(consellor_id,Date,slot,available) values(?,?,?,?)
+            `,['3',Date,Slot,Available],
+            function(err,results){
+                if(err)reject(err)
+                else {resolve()}
+            }
+        )
+    })
+}
+function getAllSlotsA(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select DISTINCT slot,Date,available from Aryan
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function getAllDatesA(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select DISTINCT Date from Aryan
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
+function getAllConsellors(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select* from consellors
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            }
+        )
+    })
+}
 
-db.sync()
-    .then(() => console.log("Database has been synced"))
-    .catch((err) => console.error(err))
+function handleDisconnect() {
+     // Recreate the connection, since
+                                                    // the old one cannot be reused.
+  
+    connection.connect(function(err) {              // The server is either down
+      if(err) {                                     // or restarting (takes a while sometimes).
+        console.log('error when connecting to db:', err);
+        setTimeout(handleDisconnect, 2000); // We introduce a delay before attempting to reconnect,
+      }                                     // to avoid a hot loop, and to allow our node script to
+    });                                     // process asynchronous requests in the meantime.
+                                            // If you're also serving http, display a 503 error.
+    connection.on('error', function(err) {
+      console.log('db error', err);
+      if(err.code === 'PROTOCOL_CONNECTION_LOST') { // Connection to the MySQL server is usually
+        handleDisconnect();                         // lost due to either server restart, or a
+      } else {                                      // connnection idle timeout (the wait_timeout
+        throw err;                                  // server variable configures this)
+      }
+    });
+  }
+  function addDataToStudents(name,Slot,Date,consellor_id,Description){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Insert into students(name,slot,date,consellor_id,description) values(?,?,?,?,?)
+            `,[name,Slot,Date,consellor_id,Description],
+            function(err,results){
+                if(err){reject(err)
+                console.log("error")}
+                else {resolve()
+                console.log("Insertes successfully")}
+            }
+        )
+    })
+}
+function updateTableR(Available,slot,date){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Update Raj SET available = ? where slot = ? AND Date = ?
+            `,[Available,slot,date],
+            function(err,results){
+                if(err){reject(err)
+                console.log("error")
+                console.log(err)}
+                else {resolve()
+                console.log("Updated successfully")}
+            }
+        )
+    })
+}
+function updateTableP(Available,slot,date){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Update Prem SET available = ? where slot = ? AND Date = ?
+            `,[Available,slot,date],
+            function(err,results){
+                if(err){reject(err)
+                console.log("error")}
+                else {resolve()
+                console.log("Updated successfully")}
+            }
+        )
+    })
+}function updateTableA(Available,slot,date){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` Update Aryan SET available = ? where slot = ? AND Date = ?
+            `,[Available,slot,date],
+            function(err,results){
+                if(err){reject(err)
+                console.log("error")}
+                else {resolve()
+                console.log("Updated successfully")}
+            }
+        )
+    })
+}
+function getFromStudents(){
+    return new Promise((resolve,reject)=>{
+        connection.query(
+            ` 
+            Select* from students
+            `,function(err,rows,cols){
+                if(err)reject(err)
+                else resolve(rows)
+            } 
+        )
+    
+    })  
 
+}
+
+  handleDisconnect();
 exports = module.exports = {
-    Consellor,Student,Aryan,Raj,Prem
+    getAllstudentP,getAllstudentR,addSlotsR,getAllSlotsR,getAllDatesR,addSlotsP,getAllSlotsP,getAllDatesP,
+    getAllstudentA,addSlotsA,getAllSlotsA,getAllConsellors,getAllDatesA,addDataToStudents,updateTableR,
+    updateTableP,updateTableA,getFromStudents
 }

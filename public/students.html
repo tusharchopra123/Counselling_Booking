@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="students.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id = "form">
+    Please enter the name 
+    <input type="text" id="name">
+    <br>
+    <br>
+    Pls select the Consellor you want
+    <select name="consellors" onchange = "my_consellor()"id="consellors">
+        <option>Select the Consellor</option>
+    </select>
+    <br><br>
+    pls select the slot
+    <select onchange="my_date()" disabled name="dates" id="date">
+    <option>Select The Date</option>
+    </select>
+    <select disabled name="slots" id="slots">
+        <option>Select the slot</option>
+    </select>
+</form>
+<br>
+Pls enter your questions here
+<br>
+<br>
+<textarea name="Questions" id="description" form="form">Enter text here...</textarea>
+<br>
+<button id="btnScheduldeadd">Submit</button>
+</body>
+</html>
