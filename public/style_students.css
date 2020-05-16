@@ -1,0 +1,20 @@
+body{
+    margin-top: 10%;
+    scroll-behavior: smooth;
+}
+.container{
+    width: 95%;
+}
+.navbar-brand{
+padding-left: 2%;
+}
+
+@media (min-width: 320px) and (max-width: 820px){
+body{
+    margin-top: 25%
+}
+
+.container{
+    width: 88%;
+}
+}

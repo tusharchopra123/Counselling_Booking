@@ -3,35 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/98e8f57408.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="jquery.js"></script>
     <script src="students.js"></script>
+    <link rel="stylesheet" href="style_students.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="" id = "form">
-    Please enter the name 
-    <input type="text" id="name">
-    <br>
-    <br>
-    Pls select the Consellor you want
-    <select name="consellors" onchange = "my_consellor()"id="consellors">
-        <option>Select the Consellor</option>
-    </select>
-    <br><br>
-    pls select the slot
-    <select onchange="my_date()" disabled name="dates" id="date">
-    <option>Select The Date</option>
-    </select>
-    <select disabled name="slots" id="slots">
-        <option>Select the slot</option>
-    </select>
-</form>
-<br>
-Pls enter your questions here
-<br>
-<br>
-<textarea name="Questions" id="description" form="form">Enter text here...</textarea>
-<br>
-<button id="btnScheduldeadd">Submit</button>
+    <header class="navbar navbar-top fixed-top navbar-expand-md navbar-dark bg-info">
+        <a  style="font-size:3.5vh" class="navbar-brand pt-0 pb-2 font-weight-bold" href="#">STUDENTS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end text-right" id="navbarSupportedContent">
+            <a href="about.html" style="font-size:3vh" class="font-weight-bold text-light justify-content-end"id="navbar-special1">About Me</a>
+        </div>
+    </header> 
+    <section class="container border border-primary rounded p-5">
+        <div class="row justify-content-between">
+            <form class="col-12" action="" id = "form">
+                <div class="row">
+                <span class="col-5 mr-1 mr-md-0 col-md-2 mb-3">Your name</span> 
+                <input class="col-6 ml-2 ml-md-0 col-md-4 mb-3" type="text" id="name">
+               
+                <span class="col-7 col-md-2 mb-3">Consellor</span> 
+                <select class="col-5 col-md-4 mb-3"name="consellors" onchange = "my_consellor()"id="consellors">
+                    <option class="text-secondary">Select</option>
+                </select>
+            
+                <span class="col-4 col-md-2 mb-3"> Slots </span>
+                <select class="col-4 mb-3" onchange="my_date()" disabled name="dates" id="date">
+                <option>Date</option>
+                </select>
+                <span class="d-none d-sm-block col-md-2 mb-3"></span>
+                <select class="col-4 mb-3" disabled name="slots" id="slots">
+                    <option>slot</option>
+                </select>
+                </form>
+            
+                <span class="col-12 mb-3 ">Enter your questions here</span>
+            
+            
+            <textarea class="col-12 mb-3" name="Questions" id="description" form="form">Enter text here...</textarea>
+            <button class="col-12"id="btnScheduldeadd">Submit</button>
+        </div>
+        </div>
+</section>
+<footer class="navbar justify-content-end navbar-top p-md-1 p-sm-1 fixed-bottom mb-0 navbar-expand-md navbar-dark bg-info">
+    <div class=" d-flex justify-content-end">
+        <a href="https://twitter.com/tushar386" target="_blank"><i class="fab text-white fa-3x fa-twitter-square pr-2"></i></a>
+        <a href="https://www.linkedin.com/in/tushar-chopra-bb244412b/" target="_blank"><i class="fab text-white fa-3x fa-linkedin pr-2"></i></a>
+        <a href="https://www.instagram.com/tushar.chopra.58/" target="_blank"><i class="fab text-white fa-3x fa-instagram-square pr-2"></i></a>
+        <a href="https://github.com/tusharchopra123" target="_blank"><i class="fab text-white fa-3x fa-github-square pr-2"></i></a>
+
+    </div>     
+</footer>     
+
+ 
+
 </body>
 </html>

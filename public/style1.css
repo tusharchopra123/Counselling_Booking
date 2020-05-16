@@ -1,0 +1,241 @@
+#navbar-special{
+font-family: 'Baloo Da 2', cursive;
+font-weight: 800;
+color: #ffffff;
+padding-bottom: 0.5rem;
+}
+@viewport {
+    width: device-width ;
+    zoom: 1.0 ;
+  }
+@-ms-viewport {
+    width: device-width ;
+  }
+
+#navbar-special1{
+    font-family: 'Baloo Da 2', cursive;
+    font-weight: 800;
+    color: #ffffff;
+    
+    }
+.nav-link{
+    padding-bottom: 0;
+}
+.navbar-expand-xl .navbar-nav .nav-link{
+    padding: 0;
+}
+.bg-info{
+    background: linear-gradient(-80deg, #10A48F, #1670C07D);
+    -webkit-background: linear-gradient(-80deg, #10A48F, #1670C07D);
+    -moz-background: linear-gradient(-80deg, #10A48F, #1670C07D);
+    -ms-background: linear-gradient(-80deg, #10A48F, #1670C07D);
+    -o-background: linear-gradient(-80deg, #10A48F, #1670C07D);
+}
+.specialnavbar{
+    text-align: right;
+}
+
+.border {
+
+    border: 1px solid #e9e9eb !important;
+}
+/* .table-special{
+    margin-top: 6rem
+} */
+.special{
+    height: 1.60rem;
+    width: 1.25rem;
+}
+.text-dark {
+    color: #000 !important;
+}
+.secondary{
+    font-size: 2.5rem;
+}
+.hover1:hover{
+    background: #82848382;
+}
+
+.bg-secondary {
+    font-family: 'Baloo Da 2', cursive;
+    font-size: 1.7rem;
+    background: linear-gradient(-80deg, #10A48FB3, #1670C0A1);
+    -webkit-background: linear-gradient(-80deg, #10A48FB3, #1670C0A1);
+    -moz-background: linear-gradient(-80deg, #10A48FB3, #1670C0A1);
+    -ms-background: linear-gradient(-80deg, #10A48FB3, #1670C0A1);
+    -o-background: linear-gradient(-80deg, #10A48FB3, #1670C0A1);
+}
+.rightside{
+padding-top: 10px;
+float: right;
+width: 75%
+}
+.icon{
+    font-size: 2rem;
+}
+.photo{
+    width:60%
+}
+.border-right{
+    border-color:  #1670C0A1;
+}
+.skills{   
+    color: aliceblue;
+    font-size: 1.7vw;
+    background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+    -webkit-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+    -moz-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+    -ms-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+    -o-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+}
+.font1
+{
+    font-family: 'Baloo Da 2', cursive;
+    font-size: 120%;
+}
+sup {
+    top: 0.35rem;
+
+}
+.scifun{
+    top: 0.35em;
+    text-align: center;
+}
+.font{
+    font-family: 'Baloo Da 2', cursive;
+    font-size: 120%;
+}
+.courses{
+    font-size: 80%;
+    font-family: 'Baloo Da 2', cursive;;
+}
+body{
+    padding-top: 66px ;
+    padding-bottom: 75px;
+
+    background-color: #ecedee ;
+}
+@media (min-width: 320px) and (max-width: 480px) {
+    .container{
+        width: 80%;
+        scroll-behavior: smooth;
+        
+    }
+    html{
+        overflow: scroll;
+        scroll-behavior: smooth;
+
+    }
+    .courses{
+        font-size: 120%;
+    }
+    .skills{   
+        color: aliceblue;
+        font-size: 120%;
+        margin-left: 5%;
+        width:90%;
+        /* margin-right: 10%; */
+        background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -webkit-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -moz-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -ms-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -o-background: linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        
+    }
+    .intro{
+        background:linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -webkit-background:linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -moz-background:linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -ms-background:linear-gradient(-80deg, #10A48FD9, #1670C0DB);
+        -o-background:linear-gradient(-80deg, #10A48FD9, #1670C0DB); 
+
+        margin-top:30px
+    }
+    .mycol-1{
+        width:30%;
+        align-content: center;
+        font-size: 200%;
+        font-weight: bold;
+        padding-top: 4%;
+    }
+    .mycol-2{
+        width:70%;
+        align-content: flex-start;
+    }
+    .photo{
+        margin-top: 7%;
+        margin-bottom: 0%;
+        width: 40%;
+        height: 80%;
+        opacity: 0.9;
+    }
+    .number{
+        display: none;
+    }
+    body{
+        /* padding-top: 66px ; */
+        padding-bottom: 75px;
+        background-color: #ecedee ;
+    }
+}
+@media (min-width: 480px)  {
+    .mycol-1{
+        margin-top: 4%;
+        font-family: 'Baloo Da 2', cursive;
+        font-size: 1.7rem;
+        -webkit-background: linear-gradient(-80deg,  #10a48fbf, #1670c0e8);
+        -moz-background: linear-gradient(-80deg,  #10a48fbf, #1670c0e8);
+        -ms-background: linear-gradient(-80deg,  #10a48fbf, #1670c0e8);
+        -o-background: linear-gradient(-80deg,  #10a48fbf, #1670c0e8);
+        background: linear-gradient(-80deg,  #10a48fbf, #1670c0e8);
+
+
+    }
+    .photo{
+        margin-top: 2%;
+        margin-bottom: 0%;
+        width: 40%;
+        height: 80%;
+        opacity: 0.9;
+    }
+    .mycol-1{
+        font-size:3vh;
+    }
+    .number{
+        font-size:3vh;
+        font-weight: bold;
+    }
+}
+.btn-white{
+    background-color: #d4d5d6;
+}
+.btn-info{
+    background-color: #C2C2C2;
+    color: black;
+}
+#bdy{
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+
+    background-color: #ecedee !important;
+}
+footer{
+    bottom: 0;
+}
+*:focus {outline:none !important;
+    box-shadow: none !important;
+  }
+*:active{
+    outline:none !important;
+    box-shadow: none !important;
+}
+.hover1:focus{
+    background:  #82848382;
+}
+.hover1:active{
+    background:  #82848382;
+}
+ul { list-style-type: none; 
+    padding-left: 1.2em;
+}
+

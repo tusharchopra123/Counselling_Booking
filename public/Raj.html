@@ -3,32 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="jquery.js"></script>
     <script src="Raj.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <form> 
-                    <div class="form-group">
-                        <label for="Date">Date</label>
-                        <input type="date" name="date" id="Date">
+    <header class="navbar navbar-top fixed-top navbar-expand-md navbar-dark bg-info">
+        <a  style="font-size:3.5vh" class="navbar-brand pt-0 pb-2 font-weight-bold" href="#">RAJ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end text-right" id="navbarSupportedContent">
+            <a href="about.html" style="font-size:3vh" class="font-weight-bold text-light justify-content-end"id="navbar-special1">About Me</a>
+        </div>
+    </header> 
+    <section class="first">
+    <div class="container">
+    <div class="row">
+        <form class="col-12"> 
+            <div class="row">
+                    <div class="col-12 form-group justify-content-start">
+                        <div class="row">
+                            <label class="col-1 mr-3 mr-md-0 col-md-2 mt-2 mt-md-0" for="Date">Date</label>
+                            <input class="col-9 ml-4 ml-md-0 col-md-4 mt-2 mb-2 mb-md-0 mt-md-0 " type="date" name="date" id="Date">
+                            <label class="col-1 mr-3 mr-md-0 col-md-2 mt-2 mt-md-0" for="Slot">Slot</label>
+                            <input class="col-9 ml-4 ml-md-0 col-md-4 mt-2 mb-1 mb-md-0 mt-md-0" type="text" name="slot" id="Slot">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="Slot">Slot</label>
-                        <input type="text" name="slot" id="Slot">
-                    </div><div class="form-group">
-                        <label for="Available">Available</label>
-                        <input type="number" name="available" id="Available">
+                    <div class="col-12 mt-2 mt-md-1 ustify-content-start form-group">
+                        <div class="row">
+                            <label class="col-3 mr-4 mr-md-0 col-md-2" for="Available">Available</label>
+                            <input class="col-7 ml-3 ml-md-0 col-md-4 mr-md-3" type="number" name="available" id="Available">
+                        </div>
                     </div>
+                </div>    
                 </form>
-                <button id ="btnSlotAdd">Add</button>
-    <table id = "students" border="1" cellspacing ="10" cellpadding = "10">
+                <button class="col-md-1 ml-3 btn btn-info font-weight-bold" id ="btnSlotAdd">Add</button>
+            </div>
+        </div>
+    </section>
+    <section class="second">
+        <div class="container">
+            <div class="row">
+    <table class = "table table-borderless ml-3 col-12" id = "students" border="1" cellspacing ="10" cellpadding = "10">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Description</th>
             <th>Date</th>
             <th>Slot</th>
         </tr>
+        </thead>
         <tr>
             <td>SampleName</td>
             <td>Hello sample</td>
@@ -36,13 +67,21 @@
             <td>10-11</td>
         </tr>
     
-    </table>    
-    <table id = "slots_booked" border="1" cellspacing ="10" cellpadding = "10">
+    </table> 
+</div>
+    </div>   
+    </section>
+    <section class="third">
+        <div class="container">
+            <div class="row">
+    <table class="table table-borderless ml-3 col-12" id = "slots_booked" border="1" cellspacing ="10" cellpadding = "10">
+        <thead>
         <tr>
             <th>Date</th>
             <th>Slot</th>
             <th>Available</th>
         </tr>
+        </thead>
         <tr>
             <td>2020-05-12</td>
             <td>9-10</td>
@@ -50,5 +89,8 @@
         </tr>
     
     </table>  
+</div>
+</div>   
+</section>
 </body>
 </html>
