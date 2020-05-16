@@ -6,6 +6,7 @@ const connection = mysql.createConnection({
     password: 'TgmohC8xOi'
 })
 connection.query(
+    
     `create table if not exists consellors(
         consellor_id integer auto_increment primary key,
         name varchar(50) not null
