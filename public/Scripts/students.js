@@ -69,7 +69,14 @@ $(function(){
                         Description: Description.val(),
                     },{ 
                     }
+                    
                     )
+                    setTimeout(() => {
+                        alert("Your Response has beed recorded Successfully")
+                        name.val('')
+                        Description.val('')
+                        location.reload()
+                       }, 2000);
                 }
                 }
             }
@@ -147,4 +154,3 @@ function my_date(){
     })
     slot.removeAttribute("disabled");
 }
-

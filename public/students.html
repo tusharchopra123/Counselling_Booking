@@ -29,29 +29,29 @@
         <div class="row justify-content-between">
             <form class="col-12" action="" id = "form">
                 <div class="row">
-                <span class="col-5 mr-1 mr-md-0 col-md-2 mb-3">Your name</span> 
-                <input class="col-6 ml-2 ml-md-0 col-md-4 mb-3" type="text" id="name">
+                <span class="col-4  mr-1 mt-3 mt-md-0 mr-md-0 col-md-2 mb-3">Name</span> 
+                <input class="col-7 ml-3 mt-3 mt-md-0 ml-md-0 col-md-4 mb-3" type="text" id="name">
                
-                <span class="col-7 col-md-2 mb-3">Consellor</span> 
+                <span class="col-6 mr-3 mr-md-0 col-md-2 mb-3">Consellor</span> 
                 <select class="col-5 col-md-4 mb-3"name="consellors" onchange = "my_consellor()"id="consellors">
                     <option class="text-secondary">Select</option>
                 </select>
             
-                <span class="col-4 col-md-2 mb-3"> Slots </span>
-                <select class="col-4 mb-3" onchange="my_date()" disabled name="dates" id="date">
+                <span class="col-4  mr-1 mr-md-0 col-md-2 mb-3"> Date </span>
+                <select class="col-7 ml-3 mt-1 mt-md-0 ml-md-0 col-md-4 mb-3" onchange="my_date()" disabled name="dates" id="date">
                 <option>Date</option>
                 </select>
-                <span class="d-none d-sm-block col-md-2 mb-3"></span>
-                <select class="col-4 mb-3" disabled name="slots" id="slots">
+                <span class="col-4  mr-1 mr-md-0 col-md-2 mb-3">Slot</span>
+                <select class="col-7 ml-3 mt-1 mt-md-0 ml-md-0 col-md-4 mb-3" disabled name="slots" id="slots">
                     <option>slot</option>
                 </select>
                 </form>
             
-                <span class="col-12 mb-3 ">Enter your questions here</span>
+                <span class="col-12 mb-3 ">Enter Your Questions here</span>
             
             
-            <textarea class="col-12 mb-3" name="Questions" id="description" form="form">Enter text here...</textarea>
-            <button class="col-12"id="btnScheduldeadd">Submit</button>
+            <textarea class="col-12 mb-3" name="Questions" id="description" form="form" placeholder="Enter The Text Here">.</textarea>
+            <button class="col-12 btn btn-info" type = "button" id="btnScheduldeadd">Submit</button>
         </div>
         </div>
 </section>
