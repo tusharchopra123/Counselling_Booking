@@ -139,10 +139,12 @@ function my_date(){
     var text = getSelectedText('consellors');
     var request = '/api/'+ text +'/slots'
     $.get(request,(data)=>{
+        var index=0
         for(i=0;i<data.length;i++){
             if(data[i].Date===date){
+                index++
                 if(data[i].available==0){
-                    
+                    index--
                 }else{
                 var opt = document.createElement('option');
                 opt.appendChild( document.createTextNode(data[i].slot));
@@ -150,6 +152,9 @@ function my_date(){
                 slot.appendChild(opt); 
                 }
             }
+        }
+        if(index==0){
+            alert("All slots booked for this Date")
         }
     })
     slot.removeAttribute("disabled");

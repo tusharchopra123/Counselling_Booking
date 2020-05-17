@@ -1,100 +1,238 @@
 const route = require('express').Router()
-const db = require('../db')
+const Sequelize = require('sequelize')
+const Raj = require('../db').Raj
+const Prem = require('../db').Prem
+const Aryan = require('../db').Aryan
+const Consellors = require('../db').Consellors
+const students = require('../db').students
 route.get('/Raj',(req,res)=>{
-    db.getAllstudentR()
-        .then((students)=>res.send(students))
-        .catch((err)=>res.send({error: err}))
-        
+    students.findAll({where: {consellor_id:'1'}})
+        .then((students)=>res.status(200).send(students))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.get('/Raj/slots',(req,res)=>{
-    db.getAllSlotsR()
-    .then((slots)=>res.send(slots))
-    .catch((err)=>res.send({error:err}))
+    Raj.findAll({
+        attributes: [
+            // specify an array where the first element is the SQL function and the second is the alias
+            [Sequelize.fn('DISTINCT', Sequelize.col('slot')) ,'slot'],
+            'Date',
+            'available'
+        ]
+    })
+    .then((slots)=>res.status(200).send(slots))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.get('/Raj/Dates',(req,res)=>{
-    db.getAllDatesR()
-    .then((dates)=>res.send(dates))
-    .catch((err)=>res.send({error:err}))
+    Raj.findAll({
+        attributes: [
+            // specify an array where the first element is the SQL function and the second is the alias
+            [Sequelize.fn('DISTINCT', Sequelize.col('Date')) ,'Date']
+        ]
+    })
+    .then((slots)=>res.status(200).send(slots))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.post('/Raj',(req,res)=>{
-    db.addSlotsR(req.body.Date,req.body.Slot,req.body.Available)
-    .then(()=>{res.redirect('/Raj')})
-    .catch((err)=>res.send({error:err}))
+    Raj.create({
+        consellor_id: '1',
+        Date:  req.body.Date,
+        slot: req.body.Slot,
+        available: req.body.Available
+    }).then((date)=>{
+        return
+    }).catch((err)=>{
+        console.log(err)
+        return res.redirect('/raj')
+      })
 })
 route.get('/Prem',(req,res)=>{
-    db.getAllstudentP()
-        .then((students)=>res.send(students))
-        .catch((err)=>res.send({error: err}))
+    students.findAll({where: {consellor_id:'2'}})
+        .then((students)=>res.status(200).send(students))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.get('/Prem/slots',(req,res)=>{
-    db.getAllSlotsP()
-    .then((slots)=>res.send(slots))
-    .catch((err)=>res.send({error:err}))
+    Prem.findAll({
+        attributes: [
+            // specify an array where the first element is the SQL function and the second is the alias
+            [Sequelize.fn('DISTINCT', Sequelize.col('slot')) ,'slot'],
+            'Date',
+            'available'
+        ]
+    })
+    .then((slots)=>res.status(200).send(slots))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.get('/Prem/Dates',(req,res)=>{
-    db.getAllDatesP()
-    .then((dates)=>res.send(dates))
-    .catch((err)=>res.send({error:err}))
+    Prem.findAll({
+        attributes: [
+            // specify an array where the first element is the SQL function and the second is the alias
+            [Sequelize.fn('DISTINCT', Sequelize.col('Date')) ,'Date']
+        ]
+    })
+    .then((slots)=>res.status(200).send(slots))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.post('/Prem',(req,res)=>{
-    db.addSlotsP(req.body.Date,req.body.Slot,req.body.Available)
-    .then(()=>{res.redirect('/Prem')})
-    .catch((err)=>res.send({error:err}))
+    Prem.create({
+        consellor_id: '1',
+        Date:  req.body.Date,
+        slot: req.body.Slot,
+        available: req.body.Available
+    }).then((date)=>{
+        return
+    }).catch((err)=>{
+        console.log(err)
+        return res.redirect('/raj')
+      })
 })
 route.get('/Aryan',(req,res)=>{
-    db.getAllstudentA()
-        .then((students)=>res.send(students))
-        .catch((err)=>res.send({error: err}))
+    students.findAll({where: {consellor_id:'3'}})
+        .then((students)=>res.status(200).send(students))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.get('/Aryan/slots',(req,res)=>{
-    db.getAllSlotsA()
-    .then((slots)=>res.send(slots))
-    .catch((err)=>res.send({error:err}))
+    Aryan.findAll({
+        attributes: [
+            // specify an array where the first element is the SQL function and the second is the alias
+            [Sequelize.fn('DISTINCT', Sequelize.col('slot')) ,'slot'],
+            'Date',
+            'available'
+        ]
+    })
+    .then((slots)=>res.status(200).send(slots))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.get('/Aryan/Dates',(req,res)=>{
-    db.getAllDatesA()
-    .then((dates)=>res.send(dates))
-    .catch((err)=>res.send({error:err}))
+    Aryan.findAll({
+        attributes: [
+            // specify an array where the first element is the SQL function and the second is the alias
+            [Sequelize.fn('DISTINCT', Sequelize.col('Date')) ,'Date']
+        ]
+    })
+    .then((slots)=>res.status(200).send(slots))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.post('/Aryan',(req,res)=>{
-    db.addSlotsA(req.body.Date,req.body.Slot,req.body.Available)
-    .then(()=>{res.redirect('/Prem')
-        
-         }   
-    )
-    .catch((err)=>res.send({error:err}))
+    Aryan.create({
+        consellor_id: '1',
+        Date:  req.body.Date,
+        slot: req.body.Slot,
+        available: req.body.Available
+    }).then((date)=>{
+        return
+    }).catch((err)=>{
+        console.log(err)
+        return res.redirect('/raj')
+      })
 })
+
 route.get('/consellors',(req,res)=>{
-    db.getAllConsellors()
-    .then((consellors)=>res.send(consellors))
-    .catch((err)=>res.send({error:err}))
+    Consellors.findAll()
+    .then((consellors)=>res.status(200).send(consellors))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
 })
 route.post('/students',(req,res)=>{
-    console.log("Here in post")
-    db.addDataToStudents(req.body.name,req.body.Slot,req.body.Date,req.body.consellor_id,req.body.Description)
-    .then(()=>res.redirect('/students'))
-    .catch((err)=>{res.send({error:err})})
+    students.create({
+        name: req.body.name,
+        slot: req.body.Slot,
+        date: req.body.Date,
+        consellor_id: req.body.consellor_id,
+        description: req.body.Description,
+    })
+    .then((user)=>{return})
+    .catch((err)=>{
+        console.log(err)
+        return res.redirect('/students')})
 })
 route.post('/students/R',(req,res)=>{
-    console.log("Here inRaj in post")
-    db.updateTableR(req.body.available,req.body.Slot,req.body.Date)
+    Raj.update({ available: req.body.available }, {
+        where: {
+          slot: req.body.Slot,
+          Date: req.body.Date
+        }
+      })
     .then(()=>res.redirect('/students'))
     .catch((err)=>{res.send({error:err})})
 })
 route.post('/students/P',(req,res)=>{
-    db.updateTableP(req.body.available,req.body.Slot,req.body.Date)
+    Prem.update({ available: req.body.available }, {
+        where: {
+          slot: req.body.Slot,
+          Date: req.body.Date
+        }
+      })
+
     .then(()=>res.redirect('/students'))
     .catch((err)=>{res.send({error:err})})
 })
 route.post('/students/A',(req,res)=>{
-    db.updateTableA(req.body.available,req.body.Slot,req.body.Date)
+    Aryan.update({ available: req.body.available }, {
+        where: {
+          slot: req.body.Slot,
+          Date: req.body.Date
+        }
+      })
     .then(()=>res.redirect('/students'))
     .catch((err)=>{res.send({error:err})})
 })
 route.get('/students/list',(req,res)=>{
-    db.getFromStudents()
-    .then((students)=>res.send(students))
-    .catch((err)=>res.send({error:err}))
+    students.findAll()
+    .then((students)=>res.status(200).send(students))
+        .catch((err)=>{
+            console.log(err)
+            res.status(500).send({error: "Could not retrive data"
+            })
+        })
+})
+route.get('/con',(req,res)=>{
+    Consellors.create({
+        consellor_id: '3',
+        name: 'Aryan'
+    })
+    .then(()=>{res.send("hello")})
+    .catch((err)=>{
+        console.log(err)
+        return })
 })
 exports = module.exports = {
     route

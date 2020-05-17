@@ -11,4 +11,9 @@ app.use('/Raj',express.static(path.join(__dirname,'public/Raj.html')))
 app.use('/Prem',express.static(path.join(__dirname,'public/Prem.html')))
 app.use('/Aryan',express.static(path.join(__dirname,'public/Aryan.html')))
 
+process.on('SIGINT', function() {
+    console.log( "\nGracefully shutting down from SIGINT (Ctrl-C)" );
+    // some other closing procedures go here
+    process.exit(1);
+  });
 app.listen(server_port)
