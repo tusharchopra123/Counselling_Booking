@@ -1,12 +1,13 @@
 body{
     margin-top: 60px;
     scroll-behavior: smooth;
+    margin-bottom: 25%;
 }
 .first{
     padding-top: 2%;
 }
 .container{
-    width: 85%;
+    width: 90%;
 }
 .navbar-brand{
 padding-left: 2%;
@@ -24,7 +25,14 @@ body{
 }
 .second{
     width: 95%;
+    word-wrap: break-word;
     margin-top:3%;
+    font-size: 3vw;
+    margin-left: 0;
+    margin-right: 4vw ;
+}
+.Date_sp{
+    word-wrap: break-word;
 }
 
 .third{

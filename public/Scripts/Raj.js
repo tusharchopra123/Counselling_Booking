@@ -63,7 +63,7 @@ $(function(){
                 <tr class="table-light">
                 <td> ${student.name}</td>
                 <td> ${student.description}</td>
-                <td> ${student.date}</td>
+                <td class="Date_sp"> ${student.date}</td>
                 <td> ${student.slot}</td>
                 </tr>                
                 
@@ -76,7 +76,7 @@ $(function(){
                     <tr class ="table-info">
                     <td> ${student.name}</td>
                     <td> ${student.description}</td>
-                    <td> ${student.date}</td>
+                    <td class="Date_sp"> ${student.date}</td>
                     <td> ${student.slot}</td>
                     </tr>                
                     
