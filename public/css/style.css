@@ -9,6 +9,12 @@ body{
 .container{
     width: 90%;
 }
+a{
+    text-decoration: none !important;
+}
+a:hover{
+    text-decoration: none !important;
+}
 .navbar-brand{
 padding-left: 2%;
 }

@@ -1,0 +1,59 @@
+a{
+    text-decoration: none !important;
+    color: white;
+}
+a:hover{
+    color: white !important;
+}
+.navbar_sp{
+    font-size: 5vh;
+}
+body{
+    margin-top: 15%;
+    margin-bottom: 10%;
+}
+
+.card{
+    height: 15vw;
+    width: 21%;
+    margin-right: 0%;
+    margin-left:3%;
+    background: wheat;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    padding-top: 4%;
+    font-size: 3.5vw;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+.card:hover{
+    background-color: #6dbfccf7 !important;
+}
+
+@media (min-width: 320px) and (max-width: 820px){
+    body{
+        margin-top: 35%;
+    }
+    .container{
+        width: 85%;
+        align-items: center;
+    }
+    .card{
+        width: 80%;
+        height: 15vh;
+        padding-top: 0%;
+        display: flex;
+        justify-content: center;
+        margin-right: 0%;
+        margin-left: 10%;
+        margin-bottom: 5%;
+        font-size: 4.5vh;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+  
+    .navbar_sp{
+        font-size: 4vh;
+    }
+    }

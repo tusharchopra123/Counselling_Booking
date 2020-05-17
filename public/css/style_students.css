@@ -9,6 +9,12 @@ body{
 padding-left: 2%;
 }
 
+a{
+    text-decoration: none !important;
+}
+a .text-light:hover{
+    color: white !important;
+}
 @media (min-width: 320px) and (max-width: 820px){
 body{
     margin-top: 25%;
