@@ -142,7 +142,7 @@ function my_date(){
         for(i=0;i<data.length;i++){
             if(data[i].Date===date){
                 if(data[i].available==0){
-                    window.alert("No SLots is availabe")
+                    
                 }else{
                 var opt = document.createElement('option');
                 opt.appendChild( document.createTextNode(data[i].slot));

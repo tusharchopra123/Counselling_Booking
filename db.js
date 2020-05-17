@@ -1,93 +1,16 @@
 const mysql = require('mysql2')
-const connection = mysql.createConnection({
+let dbconfig = {
     host:'remotemysql.com',
     database: 'HFHpn7C44I',
     user:'HFHpn7C44I',
     password: 'TgmohC8xOi'
-})
-connection.query(
-    
-    `create table if not exists consellors(
-        consellor_id integer auto_increment primary key,
-        name varchar(50) not null
-    )`,function(err,results){
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Table created successfully")
-        }
-    }
-)
-connection.query(
-    `   create table if not exists Raj(
-        consellor_id integer not null,
-        Date varchar(50) not null,
-        slot varchar(50) not null,
-        avaliable integer not null,
-        studentid1 integer,
-        studentid2 integer,
-        studentid3 integer
-    )`,function(err,results){
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Table created successfully")
-        }
-    }
-)
-connection.query(
-    `create table if not exists Prem(
-        consellor_id integer not null,
-        Date varchar(50) not null,
-        slot varchar(50) not null,
-        avaliable integer not null,
-        studentid1 integer,
-        studentid2 integer,
-        studentid3 integer
-    )`,function(err,results){
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Table created successfully")
-        }
-    }
-)
-connection.query(
-    `create table if not exists Aryan(
-        consellor_id integer not null,
-        Date varchar(50) not null,
-        slot varchar(50) not null,
-        avaliable integer not null,
-        studentid1 integer,
-        studentid2 integer,
-        studentid3 integer
-    )`,function(err,results){
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Table created successfully")
-        }
-    }
-)
-connection.query(
-    `create table if not exists students(
-        student_id integer auto_increment primary key,
-        date varchar(50) not null,
-        slot varchar(50) not null,
-        consellor_id integer not null,
-        description varchar(500)
-    )`,function(err,results){
-        if(err){
-            console.log(err)
-        }else{
-            console.log("Table created successfully")
-        }
-    }
-)
+}
+var connection = mysql.createConnection(dbconfig)
+
 function getAllstudentR(){
     return new Promise((resolve,reject)=>{
         connection.query(
-            ` Select name,description,Date,slot from 
+            ` Select name,description,date,slot from 
               students where consellor_id=1
             `,function(err,rows,cols){
                 if(err){reject(err)}
@@ -100,7 +23,7 @@ function addSlotsR(Date,Slot,Available){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` Insert into Raj(consellor_id,Date,slot,available) values(?,?,?,?)
-            `,['1',Date,Slot,Available],
+            `,[1,Date,Slot,Available],
             function(err,results){
                 if(err)reject(err)
                 else {resolve()}
@@ -124,7 +47,7 @@ function getAllDatesR(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select DISTINCT Date from Raj
+            Select DISTINCT Date,available from Raj
             `,function(err,rows,cols){
                 if(err)reject(err)
                 else resolve(rows)
@@ -136,7 +59,7 @@ function getAllstudentP(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select name,description,Date,slot from 
+            Select name,description,date,slot from 
             students where consellor_id=2
             `,function(err,rows,cols){
                 if(err)reject(err)
@@ -149,7 +72,7 @@ function addSlotsP(Date,Slot,Available){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` Insert into Prem(consellor_id,Date,slot,available) values(?,?,?,?)
-            `,['2',Date,Slot,Available],
+            `,[2,Date,Slot,Available],
             function(err,results){
                 if(err)reject(err)
                 else {resolve()}
@@ -173,7 +96,7 @@ function getAllDatesP(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select DISTINCT Date from Prem
+            Select DISTINCT Date,available from Prem
             `,function(err,rows,cols){
                 if(err)reject(err)
                 else resolve(rows)
@@ -185,7 +108,7 @@ function getAllstudentA(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select name,description,Date,slot from 
+            Select name,description,date,slot from 
             students where consellor_id = 3
             `,function(err,rows,cols){
                 if(err)reject(err)
@@ -198,7 +121,7 @@ function addSlotsA(Date,Slot,Available){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` Insert into Aryan(consellor_id,Date,slot,available) values(?,?,?,?)
-            `,['3',Date,Slot,Available],
+            `,[3,Date,Slot,Available],
             function(err,results){
                 if(err)reject(err)
                 else {resolve()}
@@ -222,7 +145,7 @@ function getAllDatesA(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select DISTINCT Date from Aryan
+            Select DISTINCT Date,available from Aryan
             `,function(err,rows,cols){
                 if(err)reject(err)
                 else resolve(rows)
@@ -234,7 +157,7 @@ function getAllConsellors(){
     return new Promise((resolve,reject)=>{
         connection.query(
             ` 
-            Select* from consellors
+            Select * from consellors
             `,function(err,rows,cols){
                 if(err)reject(err)
                 else resolve(rows)
@@ -245,8 +168,7 @@ function getAllConsellors(){
 
 function handleDisconnect() {
      // Recreate the connection, since
-                                                    // the old one cannot be reused.
-  
+     connection = mysql.createConnection(dbconfig);                                               // the old one cannot be reused.
     connection.connect(function(err) {              // The server is either down
       if(err) {                                     // or restarting (takes a while sometimes).
         console.log('error when connecting to db:', err);
@@ -269,10 +191,9 @@ function handleDisconnect() {
             ` Insert into students(name,slot,date,consellor_id,description) values(?,?,?,?,?)
             `,[name,Slot,Date,consellor_id,Description],
             function(err,results){
-                if(err){reject(err)
-                console.log("error")}
+                if(err){reject(err)}
                 else {resolve()
-                console.log("Insertes successfully")}
+                console.log("Inserted successfully")}
             }
         )
     })
@@ -283,9 +204,7 @@ function updateTableR(Available,slot,date){
             ` Update Raj SET available = ? where slot = ? AND Date = ?
             `,[Available,slot,date],
             function(err,results){
-                if(err){reject(err)
-                console.log("error")
-                console.log(err)}
+                if(err)reject(err)
                 else {resolve()
                 console.log("Updated successfully")}
             }
@@ -298,8 +217,7 @@ function updateTableP(Available,slot,date){
             ` Update Prem SET available = ? where slot = ? AND Date = ?
             `,[Available,slot,date],
             function(err,results){
-                if(err){reject(err)
-                console.log("error")}
+                if(err)reject(err)
                 else {resolve()
                 console.log("Updated successfully")}
             }
@@ -311,8 +229,7 @@ function updateTableP(Available,slot,date){
             ` Update Aryan SET available = ? where slot = ? AND Date = ?
             `,[Available,slot,date],
             function(err,results){
-                if(err){reject(err)
-                console.log("error")}
+                if(err)reject(err)
                 else {resolve()
                 console.log("Updated successfully")}
             }
@@ -334,7 +251,16 @@ function getFromStudents(){
 
 }
 
-  handleDisconnect();
+// let pool = mysql.createPool(dbconfig);
+// pool.on('connection', function (_conn) {
+//     console.log("Here in pool")
+//     if (_conn) {
+//         console.log('Connected the databse via threadid %d!!',_conn.threadId)
+//         logger.info('Connected the database via threadId %d!!', _conn.threadId);
+//         _conn.query('SET SESSION auto_increment_increment=1');
+//     }
+// });
+handleDisconnect();
 exports = module.exports = {
     getAllstudentP,getAllstudentR,addSlotsR,getAllSlotsR,getAllDatesR,addSlotsP,getAllSlotsP,getAllDatesP,
     getAllstudentA,addSlotsA,getAllSlotsA,getAllConsellors,getAllDatesA,addDataToStudents,updateTableR,
