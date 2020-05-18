@@ -28,7 +28,17 @@ body{
     align-items: center;
     font-weight: bold;
     background: #17a2b8;
+    -webkit-transition:-webkit-transform 1s,opacity 1s,background 1s,width 1s,height 1s,font-size 1s;
+	-webkit-border-radius:5px;
+	-o-transition-property:width,height,-o-transform,background,font-size,opacity;
+	-o-transition-duration:1s,1s,1s,1s,1s,1s;
+	-moz-transition-property:width,height,-o-transform,background,font-size,opacity;
+	-moz-transition-duration:1s,1s,1s,1s,1s,1s;
+	transition-property:width,height,transform,background,font-size,opacity;
+	transition-duration:1s,1s,1s,1s,1s,1s;
+	opacity:1;
 }
+
 .card:hover{
     background-color: #6dbfccf7 !important;
 }
@@ -51,6 +61,7 @@ body{
 	opacity:1;
 	
 }
+
 @media (min-width: 320px) and (max-width: 820px){
     body{
         margin-top: 30%;
