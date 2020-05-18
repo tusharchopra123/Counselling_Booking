@@ -9,7 +9,7 @@ $(function(){
     
 
 
-    await $('#btnSlotAdd').click(function(){
+ $('#btnSlotAdd').click(function(){
         $.get('/api/Raj/slots',(data)=>{
             var flag=1
             for(i=0;i<data.length;i++){
