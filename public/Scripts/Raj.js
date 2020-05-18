@@ -6,12 +6,14 @@ $(function(){
     let tbl_students = $('#students')
     let slots_booked = $('#slots_booked')
     
-    $('#btnSlotAdd').click(function(){
+    
+
+
+    await $('#btnSlotAdd').click(function(){
         $.get('/api/Raj/slots',(data)=>{
             var flag=1
             for(i=0;i<data.length;i++){
                 if(data[i].Date == Date.val() && data[i].slot==Slot.val()){
-         
                     flag=0
                 }
                 
@@ -133,3 +135,4 @@ $.get('/api/Raj/slots',(data)=>{
 })
 
 })
+
