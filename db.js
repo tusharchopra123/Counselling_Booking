@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize')
-
-const db = new Sequelize('HFHpn7C44I', 'HFHpn7C44I', 'TgmohC8xOi', {
+const db = new Sequelize(process.env.DATABASE,process.env.DATABASE ,process.env.PASSWORD , {
     host:'remotemysql.com',
     dialect: 'mysql',
     port:3306,

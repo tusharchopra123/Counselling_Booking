@@ -1,6 +1,9 @@
 const express = require('express')
 const path = require('path')
 const app = express();
+const dotenv = require("dotenv")
+ 
+dotenv.config()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 const server_port = process.env.PORT || 9381
@@ -16,4 +19,6 @@ process.on('SIGINT', function() {
     // some other closing procedures go here
     process.exit(1);
   });
-app.listen(server_port)
+app.listen(server_port,()=>{
+console.log(process.env.DATABASE)
+})
