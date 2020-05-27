@@ -20,5 +20,5 @@ process.on('SIGINT', function() {
     process.exit(1);
   });
 app.listen(server_port,()=>{
-console.log(process.env.DATABASE)
+
 })
