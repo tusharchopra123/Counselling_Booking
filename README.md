@@ -6,4 +6,4 @@ It has a portal for different teachers to book a slot as per their convenience a
 -A student cannot book the same slot again.\
 ### Dependencies
 -Used Nodejs,Sequelize,HTML,CSS,JavaScript,JQuery\
-The Website is Published on the following link :- [http://coun.tush.tech]
+The Website is Published on the following link :- [http://coun.tush.tech](http://coun.tush.tech)
