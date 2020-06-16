@@ -47,7 +47,7 @@ $(function(){
             <thead class="bg-info text-white">
             <tr>
             <th>Name</th>
-            <th>Description</th>
+            <th class="wrap">Description</th>
             <th>Date</th>
             <th>Slot</th>
             </tr>       
@@ -62,7 +62,7 @@ $(function(){
                 
                 <tr class="table-light">
                 <td> ${student.name}</td>
-                <td> ${student.description}</td>
+                <td class="wrap"> ${student.description}</td>
                 <td> ${student.date}</td>
                 <td> ${student.slot}</td>
                 </tr>                
@@ -75,7 +75,7 @@ $(function(){
                     
                     <tr class ="table-info">
                     <td> ${student.name}</td>
-                    <td> ${student.description}</td>
+                    <td class="wrap"> ${student.description}</td>
                     <td> ${student.date}</td>
                     <td> ${student.slot}</td>
                     </tr>                

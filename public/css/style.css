@@ -64,4 +64,7 @@ body{
     width:95%;
     
 }
+.word{
+    overflow-wrap: break-word;
+}
 }
