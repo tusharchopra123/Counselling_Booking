@@ -7,13 +7,8 @@ dotenv.config()
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 const server_port = process.env.PORT || 9381
-app.use('/', express.static(path.join(__dirname, 'public/loading.html')))
-app.use('/loading.html',(req,res)=>{
-  setTimeout(()=>{
-    res.redirect('/home')
-  },3000)
-})
-app.use('/home',express.static(path.join(__dirname,'public')))
+
+app.use('/',express.static(path.join(__dirname,'public')))
 app.use('/api', require('./routes/api').route)
 app.use('/students',express.static(path.join(__dirname,'public/students.html')))
 app.use('/Raj',express.static(path.join(__dirname,'public/Raj.html')))
