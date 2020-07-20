@@ -64,4 +64,7 @@ body{
     width:95%;
     
 }
+.wrap{
+    overflow-wrap: anywhere;
+}
 }

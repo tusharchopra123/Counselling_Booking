@@ -23,7 +23,9 @@ route.get('/Raj/slots',(req,res)=>{
             'available'
         ]
     })
-    .then((slots)=>res.status(200).send(slots))
+    .then((slots)=>{res.status(200).send(slots)
+        console.log(slots[1])
+    })
         .catch((err)=>{
             console.log(err)
             res.status(500).send({error: "Could not retrive data"
