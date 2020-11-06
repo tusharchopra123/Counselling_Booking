@@ -70,13 +70,13 @@ $(function(){
         )
         var index=0
         for(student of students){
+            var desc = student.description.split('\n').join('<br>');
             if(index%2==0){
             tbl_students.append(
                 `
-                
                 <tr class="table-light">
                 <td> ${student.name}</td>
-                <td class="wrap"> ${student.description}</td>
+                <td class="wrap"> ${desc}</td>
                 <td class="Date_sp"> ${student.date}</td>
                 <td> ${student.slot}</td>
                 </tr>                
@@ -89,7 +89,7 @@ $(function(){
                     
                     <tr class ="table-info">
                     <td> ${student.name}</td>
-                    <td class="wrap"> ${student.description}</td>
+                    <td class="wrap"> ${desc}</td>
                     <td class="Date_sp"> ${student.date}</td>
                     <td> ${student.slot}</td>
                     </tr>                

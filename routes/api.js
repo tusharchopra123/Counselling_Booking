@@ -7,7 +7,7 @@ const Consellors = require('../db').Consellors
 const students = require('../db').students
 route.get('/Raj',(req,res)=>{
     students.findAll({where: {consellor_id:'1'}})
-        .then((students)=>res.status(200).send(students))
+        .then((students)=>{console.log(students);res.status(200).send(students)})
         .catch((err)=>{
             console.log(err)
             res.status(500).send({error: "Could not retrive data"
