@@ -115,8 +115,11 @@ $(function(){
             `
         )
         var index=0;
+        var k = formatDate();
+        var j=0;
         for(slot of slots){
-            if(index%2==0){
+            if(slot.Date>=k){
+            if(j%2==0){
             slots_booked.append(
                 `
                 <tr class="table-light">
@@ -137,6 +140,8 @@ $(function(){
                     `
                 )
             }
+            j++;
+        }
             index++
         }
     }

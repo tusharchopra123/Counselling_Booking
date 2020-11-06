@@ -107,6 +107,18 @@ $.get('/api/consellors',(data)=>{
 })
 
 });
+function formatDate() {
+    var d = new Date()
+    month = '' + (d.getMonth() + 1)
+    day = '' + d.getDate()
+    year = d.getFullYear()
+if (month.length < 2) 
+    month = '0' + month;
+if (day.length < 2) 
+    day = '0' + day;
+    console.log(year+"-"+month+"-"+day)
+return [year, month, day].join('-');
+}
 function my_consellor(){
 var date = document.getElementById('date')
 var consellor = document.getElementById('consellors')
@@ -115,12 +127,18 @@ date.options.length=1;
 var request =  '/api/'+text+'/Dates'
 console.log(request)
 $.get(request,(data)=>{
+    var d = formatDate();
+    var j=0;
     for(dates of data){
+        if(dates.Date>=d){
         var opt = document.createElement('option');
         opt.appendChild( document.createTextNode(dates.Date));
         opt.value = dates.Date;
-        date.appendChild(opt); 
+        date.appendChild(opt);
+        j++; 
+        }
     }
+    if(j==0)alert("No active dates are available")
 })
 date.removeAttribute("disabled");
 }
