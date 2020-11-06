@@ -1,31 +1,42 @@
 
+
 $(function(){
-    let Date = $('#Date')
+    let mDate = $('#Date')
     let Slot = $('#Slot')
     let Available = $('#Available')
     let tbl_students = $('#students')
     let slots_booked = $('#slots_booked')
-    
-    
-
-
+    function formatDate() {
+            var d = new Date()
+            month = '' + (d.getMonth() + 1)
+            day = '' + d.getDate()
+            year = d.getFullYear()
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+            console.log(year+"-"+month+"-"+day)
+        return [year, month, day].join('-');
+    }
  $('#btnSlotAdd').click(function(){
+     var cdate = formatDate();
+     console.log(mDate.val())
+        if(mDate.val()!=""&& mDate.val()>cdate){
+            console.log("here")
         $.get('/api/Raj/slots',(data)=>{
             var flag=1
             for(i=0;i<data.length;i++){
-                if(data[i].Date == Date.val() && data[i].slot==Slot.val()){
+                if(data[i].Date == mDate.val() && data[i].slot==Slot.val()){
                     flag=0
                 }
-                
             }
             if(flag){
                 if(Available.val()>0 && Available.val()<4){
                  $.post('/api/Raj',{
-                     Date: Date.val(),
+                     Date: mDate.val(),
                     Slot: Slot.val(),
                     Available: Available.val()
                  },{ 
-        
                 }
                 )
                 setTimeout(() => {
@@ -39,9 +50,11 @@ $(function(){
             }
             
         })
-       
+    }else{
+        if(mDate.val()=="")alert("please choose a date")
+        else alert("please select a future date")
+    }
     })
-    
     function refreshStudentsTable(students){
         tbl_students.empty()
         tbl_students.append(
