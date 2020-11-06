@@ -9,6 +9,8 @@ $(function(){
     var count = 0
     $('#btnScheduldeadd').click(function(){
         var text;
+        console.log(name.val())
+        if(name.val()!=""&&Description.val()!=""&&Dates.val()!="select"&&consellor.val()!="select"&&slots.val()!="select"){
         if(consellor.val()==1)text = 'Raj'
         else if(consellor.val()==2)text = 'Prem'
         else text = 'Aryan'
@@ -83,16 +85,14 @@ $(function(){
             })
         }
         })
-    
-        
         console.log("IN the button")
-        
         console.log(consellor.val())
-    
-    
+    }else{
+        alert("Please enter all details")
+    }
         // 
     })
-    function refreshConsellors(consellors_list){
+function refreshConsellors(consellors_list){
         $.each(consellors_list, function(key, value) {
             var $option = $("<option/>", {
                   value: value.consellor_id,
