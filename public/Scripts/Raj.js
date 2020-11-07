@@ -120,6 +120,7 @@ $(function(){
         var j=0;
         for(slot of slots){
             if(slot.Date>=k){
+            if(slot.available>0){
             if(j%2==0){
             slots_booked.append(
                 `
@@ -142,6 +143,7 @@ $(function(){
                 )
             }
             j++;
+            }
         }
             index++
         }
