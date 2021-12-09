@@ -6,6 +6,7 @@ const Aryan = require('../db').Aryan
 const Consellors = require('../db').Consellors
 const students = require('../db').students
 route.get('/Raj',(req,res)=>{
+    
     students.findAll({where: {consellor_id:'1'}})
         .then((students)=>{console.log(students);res.status(200).send(students)})
         .catch((err)=>{
